@@ -31,7 +31,7 @@ N  = length(t);
 
 % Mem Alloc
 X = zeros(4, N);        % State trajectory
-X(:,1) = [1; 0; 1; 0];  % Init Cond
+X(:, 1) = [1; 0; 1; 0];  % Init Cond
 
 % Event-Triggered Controller Params
 Sigma  = 0.9;           % Decay Rate Param (0 < Sigma < 1)
@@ -75,7 +75,7 @@ end
 InterEventTime = diff(Events);
 
 % Compute Lyapunov Function Values
-V = zeros(1,N);
+V = zeros(1, N);
 for i = 1:N
     V(i) = X(:, i)' * P * X(:, i);
 end
@@ -83,7 +83,7 @@ end
 %% Plotting Results
 figure
 set(gcf, 'Units', 'normalized')
-set(gcf, 'OuterPosition', [0, 0, 1, 1])
+set(gcf, 'OuterPosition', [0, 0, 1/2, 1])
 
 subplot(2, 1, 1)
 plot(t, X, 'LineWidth', 2)
@@ -104,7 +104,7 @@ legend('u_1', 'u_2')
 
 figure
 set(gcf, 'Units', 'normalized')
-set(gcf, 'OuterPosition', [0, 0, 1, 1])
+set(gcf, 'OuterPosition', [1/2, 0, 1/2, 1/2])
 
 stem(Events(2:end), InterEventTime, 'filled')
 title('Inter-Event Times')
@@ -114,7 +114,7 @@ grid on
 
 figure
 set(gcf, 'Units', 'normalized')
-set(gcf, 'OuterPosition', [0, 0, 1, 1])
+set(gcf, 'OuterPosition', [1/2, 1/2, 1/2, 1/2])
 
 subplot(2, 1, 1)
 plot(t, V, 'b', 'LineWidth', 1.5), hold on
