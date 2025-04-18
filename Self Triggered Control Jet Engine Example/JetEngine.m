@@ -86,7 +86,7 @@ classdef JetEngine < handle
             t        = 0;
             TimeVec  = t;
             RespMat  = obj.X';
-            DistInfo = Disturbance;     % [time value] or []
+            DistInfo = Disturbance;
 
             while t <= TotalTime
                 CurrState = obj.X;
@@ -94,7 +94,7 @@ classdef JetEngine < handle
 
                 if ~isempty(DistInfo) && t >= DistInfo(1)
                     U = U + DistInfo(2);
-                    DistInfo = [];                       % single shot
+                    DistInfo = [];
                 end
 
                 dt = TriggerFcn(obj, CurrState);

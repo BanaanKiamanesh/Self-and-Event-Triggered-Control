@@ -8,13 +8,12 @@ Tfinal   = 3;
 
 % Aux Functions
 TrigPer  = @(JE, State) JE.PeriodicCondition(State);
-TrigSelf = @(JE, State)  JE.TriggerCondition(State);
+TrigSelf = @(JE, State) JE.TriggerCondition(State);
 
 % Object Creation
 J = JetEngine(InitCond);
 
 %% System Simulation
-% Continuous, Periodic, Self Triggered
 [tPeriodic, XPeriodic] = J.Simulate(Tfinal,  TrigPer);
 [tSelfTrig, XSelfTrig] = J.Simulate(Tfinal, TrigSelf);
 
